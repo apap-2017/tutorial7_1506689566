@@ -50,6 +50,11 @@ public interface StudentMapper
     			many = @Many(select="selectAllCourses"))
     })
     List<StudentModel> selectAllStudents ();
+    
+    
+    
+    @Select("select id_course, name, credits from course")
+    List<CourseModel> selectCourses ();
 
     @Insert("INSERT INTO student (npm, name, gpa) VALUES (#{npm}, #{name}, #{gpa})")
     void addStudent (StudentModel student);

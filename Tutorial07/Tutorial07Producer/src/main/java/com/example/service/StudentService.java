@@ -11,6 +11,8 @@ public interface StudentService
 
 
     List<StudentModel> selectAllStudents ();
+    
+    List<CourseModel> selectCourses();
 
 
     void addStudent (StudentModel student);
