@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+		<div th:replace="fragments/header"></div>
+	</head>
+    <body>
+        <br></br>
+        <center><h3>All Students</h3></center>
+        <br></br>
+        <table class="table" >
+        		<thead style="background-color: #f4f4f4;">
+        			<tr >
+        				<th>No</th>
+        				<th>NPM</th>
+        				<th>Name</th>
+        				<th>GPA</th>
+        				<th>Cumlaude</th>
+        				<th>Delete</th>
+        				<th>Update</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr th:each="student,iterationStatus: ${students}">
+        				<td  th:text="${iterationStatus.count}">No.1</td>
+        				<td  th:text="${student.npm}">Student NPM</td>
+        				<td  th:text="${student.name}">Student Name</td>
+        				<td  th:text="${student.gpa}">Student GPA</td>
+        				<td  th:text="${student.gpa >= 3.49} ? 'Cumlaude!' : 'Sangat Memuaskan!'">Keterangan</td>
+        				<td >
+        					<div class="btn-group" role="group">
+        						<a th:href="'/student/delete/' + ${student.npm}"><button type="button" class="btn btn-primary"> 
+        						Delete Data </button></a>
+        					</div>
+        				</td>
+        				<td>
+        					<div class="btn-group" role="group">
+        						<a th:href="'/student/update/' + ${student.npm}"><button type="button" class="btn btn-primary"> 
+        						Update Data </button></a>
+        					</div>
+        				</td>
+        			</tr>
+        		</tbody>
+        </table>
+    </body>
+    <br></br>
+    <script>
+	$(document).ready(function() {
+		$('#allStudents').DataTable({
+		});
+	});
+	</script>
+    <div th:replace="fragments/footer"></div>
+</html>

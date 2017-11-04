@@ -48,10 +48,10 @@ public class StudentServiceDatabase implements StudentService
     }
     
     @Override
-    public List<StudentModel> selectStudentCourses ()
+    public List<StudentModel> selectStudentCourses (String id_course)
     {
         log.info ("select all courses and students");
-        return studentMapper.selectStudentCourses();
+        return studentMapper.selectStudentCourses(id_course);
     }
 
 
@@ -83,5 +83,11 @@ public class StudentServiceDatabase implements StudentService
     	log.info ("student" + student.getNpm() + "updated");
     	studentMapper.updateStudent(student);
     }
+
+	@Override
+	public List<CourseModel> selectCoursesAll() {
+		log.info("select course sama student");
+		return studentMapper.selectCoursesAll();
+	}
 
 }
